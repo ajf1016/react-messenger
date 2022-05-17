@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { setDoc, doc, Timestamp } from "firebase/firestore";
 
 function Register() {
+  let navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -55,6 +57,7 @@ function Register() {
         loading: false,
       });
       console.log(result.user, "RESULT USER");
+	  navigate('/')
     } catch (err) {
       console.log(err);
       setData({ ...data, error: err.message });
