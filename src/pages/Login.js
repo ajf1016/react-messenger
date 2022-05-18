@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase";
-import { setDoc, doc, Timestamp } from "firebase/firestore";
+import { updateDoc, doc, Timestamp } from "firebase/firestore";
 
-function Register() {
+function Login() {
   let navigate = useNavigate();
   const [data, setData] = useState({
-    name: "",
     email: "",
     password: "",
     error: null,
     loading: false,
   });
-  const { name, email, password, error, loading } = data;
+  const { email, password, error, loading } = data;
 
   //input onchange
   const handleChange = (e) => {
@@ -26,37 +25,28 @@ function Register() {
     console.log("STARTTED");
     console.log(data, "ONSUBMIT");
     setData({ ...data, error: null, loading: true });
-    if (!name || !email || !password) {
+    if (!email || !password) {
       setData({ ...data, error: "All fields are required" });
     }
     try {
-      //create user
-      const result = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      //login user
+      const result = await signInWithEmailAndPassword(auth, email, password);
 
-      //store data in firebase
-      await setDoc(doc(db, "users", result.user.uid), {
-        uid: result.user.uid,
-        name,
-        name,
-        email,
-        createdAt: Timestamp.fromDate(new Date()),
+      //update data in firebase
+      await updateDoc(doc(db, "users", result.user.uid), {
         isOnline: true,
       });
+      console.log(doc);
 
       //clear state
       setData({
-        name: "",
         email: "",
         password: "",
         error: null,
         loading: false,
       });
       console.log(result.user, "RESULT USER");
-	  navigate('/')
+      navigate("/");
     } catch (err) {
       console.log(err);
       setData({ ...data, error: err.message });
@@ -66,9 +56,15 @@ function Register() {
 
   return (
     <div id="register">
-      <h1>Create User</h1>
-      <form action="" className="form" onSubmit={handleSubmit}>
-        <input type="text" name="name" value={name} onChange={handleChange} />
+      <h1>Login User</h1>
+      <form
+        action=""
+        className="form"
+        onSubmit={handleSubmit}
+        style={{
+          height: 280,
+        }}
+      >
         <input
           type="email"
           name="email"
@@ -95,11 +91,11 @@ function Register() {
           </p>
         )}
         <button className="btn" disabled={loading}>
-          {loading ? "Loading..." : "Register"}
+          {loading ? "Loading..." : "Login"}
         </button>
       </form>
     </div>
   );
 }
 
-export default Register;
+export default Login;
