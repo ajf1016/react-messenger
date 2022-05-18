@@ -67,3 +67,10 @@ nav div a{
   border: 0;
   cursor: pointer;
 }
+.user-image{
+  border-radius: 50%;
+  width: 200px;
+  height : 200px;
+  overflow: hidden;
+  border: 1px solid #c9dac4;
+}
