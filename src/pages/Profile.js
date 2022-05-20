@@ -8,6 +8,7 @@ import {
   deleteObject,
 } from "firebase/storage";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
+import userImage from '../assets/user.png'
 
 function Profile() {
   const [img, setImg] = useState("");
@@ -80,7 +81,7 @@ function Profile() {
       >
         {user?.avatar && (
           <img
-            src={user?.avatar}
+            src={user?.avatar || userImage}
             style={{
               width: "100%",
               height: "100%",
