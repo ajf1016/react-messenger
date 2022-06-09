@@ -1,9 +1,9 @@
 import React from "react";
 import userImage from "../assets/user.png";
 
-function Users({ user, selectUser }) {
+function Users({ user, selectUser,chat }) {
   return (
-    <div
+    <div className="user-List"
       onClick={() => selectUser(user)}
       style={{
         display: "flex",
@@ -11,20 +11,18 @@ function Users({ user, selectUser }) {
         flexDirection: "row",
         marginBottom: 20,
         paddingBottom: 20,
-        borderBottom: "1px solid #f7f7f7",
-        position : 'fixed',
-        width : '18%',
-        height : '87vh',
-        top : 100,
-        backgroundColor : '#000',
-        left : 0,
+        padding : 10,
+        backgroundColor : chat.uid === user.uid ? '#250e38' : '#55396b',
+        borderRadius : 5,
+        cursor : 'pointer ',
+        
       }}
     >
       <div
         style={{
-          width: 60,
-          height: 60,
-          border: "1px solid #f7f7f7",
+          width: 50,
+          height: 50,
+          border: "2px solid #fff",
           borderRadius: "50%",
           overflow: "hidden",
           marginRight: 20,
@@ -40,13 +38,13 @@ function Users({ user, selectUser }) {
         />
         <div
           style={{
-            width: 20,
-            height: 20,
+            width: 15,
+            height: 15,
             borderRadius: "50%",
-            backgroundColor: user.isOnline ? "green" : "red",
+            backgroundColor: user.isOnline ? "#5FD068" : "#FF5B00",
             position: "absolute",
-            top: 0,
-            left: 0,
+            top: 8,
+            left: 10,
             zIndex: 10,
           }}
         ></div>

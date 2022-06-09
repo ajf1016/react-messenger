@@ -36,9 +36,12 @@ function Navbar() {
             <button
               onClick={handleSignout}
               style={{
-                backgroundColor: "#2d2d2d",
+                backgroundColor: "#250e38",
                 color: "#fff",
-                width: 100,
+                width: 150,
+                borderRadius : 10,
+                outline : 'none',
+                border : '.5px solid #fff',
                 height: 60,
               }}
             >

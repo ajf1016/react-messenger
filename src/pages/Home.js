@@ -59,7 +59,6 @@ function Home() {
       //   console.log(msgs);
       setMsgs(msgs);
     });
-	
   };
 
   //onsend chat
@@ -96,31 +95,22 @@ function Home() {
     <div
       style={{
         display: "flex",
-        height: "90vh",
-        marginTop: 100,
+        height : 'calc(100vh - 100px)'
       }}
     >
-      <div
+      <div  
         style={{
-          width: "20%",
-          maxHeight: "86vh",
-          borderBottom: "1px solid #f7f7f7",
-          borderRight: "1px solid #f7f7f7",
-          padding: 20,
-          // marginTop: 20,
-          overflowY: "scroll",
+          width: "25%",
+          backgroundColor : '#361353'
         }}
       >
         {users.map((user) => (
-          <Users key={user.uid} user={user} selectUser={selectUser} />
+          <Users key={user.uid} user={user} selectUser={selectUser} chat={chat}/>
         ))}
       </div>
       <div
         style={{
-          width: "80%",
-          maxHeight: "86vh",
-          borderBottom: "1px solid #f7f7f7",
-          padding: 20,
+          width: "75%",
           textAlign: "center",
         }}
       >
@@ -129,11 +119,10 @@ function Home() {
             <div
               style={{
                 width: "100%",
-                height: 80,
-                borderBottom: "1px solid #f7f7f7",
                 display: "flex",
                 alignItems: "center",
                 textAlign: "left",
+                background : '#250e38',
               }}
             >
               <div
@@ -142,7 +131,6 @@ function Home() {
                   height: 70,
                   borderRadius: "50%",
                   overflow: "hidden",
-                  marginRight: 20,
                 }}
               >
                 <img
@@ -158,6 +146,7 @@ function Home() {
                 <h1
                   style={{
                     color: "#f7f7f7",
+                    
                   }}
                 >
                   {chat?.name}
@@ -165,6 +154,7 @@ function Home() {
                 <h5
                   style={{
                     color: "#f7f7f7",
+                    marginTop : 10,
                   }}
                 >
                   {chat.isOnline ? "Online" : "Offline"}

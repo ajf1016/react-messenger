@@ -31,6 +31,7 @@ function ChatScreen({ handleSubmit, setText, text, setImg, msgs }) {
       style={{
         display: "flex",
         flexDirection: "column",
+        
       }}
     >
       <div
@@ -45,12 +46,7 @@ function ChatScreen({ handleSubmit, setText, text, setImg, msgs }) {
       <div
         style={{
           borderTop: "1px solid #f7f7f7",
-          height: 65,
-          position: "fixed",
-          bottom: 0,
-          right: 0,
-          width: "82%",
-          height: 100,
+          width: "100%",
           backgroundColor: "#000",
         }}
       >
