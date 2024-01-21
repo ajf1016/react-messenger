@@ -20,7 +20,6 @@ nav {
   height: 100px;
   -webkit-box-shadow: -1px 10px 19px -3px rgba(0, 0, 0, 0.50);
   -moz-box-shadow: -1px 10px 19px -3px rgba(0, 0, 0, 0.50);
-  box-shadow: -1px 10px 19px -3px rgba(0, 0, 0, 0.50px);
 }
 nav h3 a {
   font-size: 40px;
